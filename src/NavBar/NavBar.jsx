@@ -9,8 +9,11 @@ import NewspaperIcon from '@mui/icons-material/Newspaper';
 import LightModeIcon from '@mui/icons-material/LightMode';
 import BedtimeIcon from '@mui/icons-material/Bedtime';
 import MoodIcon from '@mui/icons-material/Mood';
+import { useNavigate } from 'react-router-dom';
 
 export default function NavBar({ mode, handleChange }) {
+  const navigate = useNavigate();
+
   const appBarColor = mode ? "#070326" : "#ffffff"; // Adjust the colors as needed
   const textColor = mode ? "#ffffff" : "#000000"; // Adjust the text colors as needed
 
@@ -19,6 +22,7 @@ export default function NavBar({ mode, handleChange }) {
       <AppBar position="fixed" sx={{ backgroundColor: appBarColor }}>
         <Toolbar>
           <IconButton
+            onClick={() => navigate("/")}
             size="large"
             edge="start"
             color="inherit"
@@ -28,6 +32,7 @@ export default function NavBar({ mode, handleChange }) {
             <NewspaperIcon /><Typography color={textColor}> &nbsp;Latest</Typography>
           </IconButton>
           <IconButton
+           onClick={() => navigate("/")}
             size="large"
             edge="start"
             color="inherit"

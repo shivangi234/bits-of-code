@@ -1,10 +1,16 @@
-import React,{useState} from "react";
+// App.js
+import React, { useState } from "react";
+import { Routes, Route } from "react-router-dom";
 import NavBar from "./NavBar/NavBar";
 import { Paper } from "@mui/material";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import Home from "./Home/Home";
-const App = () => {
+import Footer from "./components/Footer/Footer";
+import GitNotes from "./Blogs/Github/GitNotes";
+import NextNote from "./Blogs/Nextjs/NextNote";
+import ReactNotes from "./Blogs/React/ReactNotes";
 
+const App = () => {
   const [mode, setMode] = useState(true);
 
   const appTheme = createTheme({
@@ -19,12 +25,18 @@ const App = () => {
 
   return (
     <>
-     <ThemeProvider theme={appTheme}>
-      <Paper elevation={0} sx={{ height: "150vh" }} square>
-        <NavBar mode={mode} handleChange={handleChange} />
-        <Home/>
+      <ThemeProvider theme={appTheme}>
+        <Paper elevation={0} square>
+          <NavBar mode={mode} handleChange={handleChange} />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/gitnotes" element={<GitNotes />} />
+            <Route path="/nextnotes" element={<NextNote />} />
+            <Route path="/reactnotes" element={<ReactNotes />} />
+          </Routes>
+         <Footer />
         </Paper>
-    </ThemeProvider>
+      </ThemeProvider>
     </>
   );
 };
